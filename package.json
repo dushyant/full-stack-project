@@ -4,7 +4,8 @@
   "description": "Full Stack Project",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "babel-node buildScripts/srcServer.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,8 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.0",
     "babel-register": "^6.24.1",
+    "npm": "^4.6.1",
+    "open": "0.0.5",
     "webpack": "^2.5.1"
   }
 }
