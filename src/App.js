@@ -30,12 +30,13 @@ class App extends Component {
   // this can be part of shared component/module
   // this show message to user for better user experience
   showMsg(msg) {
-    let spanNode = document.createElement("SPAN");
+    let divNode = document.createElement("DIV");
     let textNode = document.createTextNode(msg);
     let msgBox = document.querySelector('#msgbox');
 
-    spanNode.appendChild(textNode);
-    msgBox.appendChild(spanNode);
+    divNode.className = "w3-panel w3-2017-primrose-yellow";
+    divNode.appendChild(textNode);
+    msgBox.appendChild(divNode);
     msgBox.style.display = "block";
 
     // hide message after 3 seconds
@@ -85,9 +86,15 @@ class App extends Component {
     return (
       <div>
         <div id="msgbox" className="msg-box" />
-        <AddFruitForm onSubmit={(fruit) => this.addFruit(fruit)} />
-        <FruitList fruits={this.state.fruits}
-          onDeleteFruit={(index) => this.deleteFruit(index)}/>
+        <div className="w3-row-padding">
+          <div className="w3-third">
+            <AddFruitForm onSubmit={(fruit) => this.addFruit(fruit)} />
+          </div>
+          <div className="w3-twothird">
+            <FruitList fruits={this.state.fruits}
+            onDeleteFruit={(index) => this.deleteFruit(index)}/>
+          </div>
+        </div>
       </div>
     );
   }

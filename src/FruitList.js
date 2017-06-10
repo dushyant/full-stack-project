@@ -10,23 +10,30 @@ render() {
     // then show message 'No fruits available'
     if(!fruits.length) {
       return (
-        <div className="no-fruits-msg">No fruits available</div>
+        <div className="w3-container w3-card-4 w3-padding-16">
+          <h3>Fruit List</h3>
+          <div className="no-fruits-msg">No fruits available</div>
+        </div>
       );
     }
     return (
-      <ul className="list-group">
-        {
-           fruits.map(function(fruit, index) {
-            return (
-              <li key={index}>
-                <h4>{fruit.name}</h4>
-                <p>Colors: {fruit.colors.join(", ")}</p>
-                <button className="danger-btn" onClick={() => onDeleteFruit(index)} key={index}>Delete</button>
-              </li>
-            );
-          })
-        }
-      </ul>
+      <div className="w3-container w3-card-4 w3-padding-16">
+        <h3 className="w3-text-green">Fruit List</h3>
+        <ul className="w3-ul w3-border w3-hoverable">
+          {
+            fruits.map(function(fruit, index) {
+              return (
+                <li className="w3-padding-16 w3-hover-light-gray" key={index}>
+                  <button className="w3-button w3-red w3-medium w3-right" onClick={() => onDeleteFruit(index)} key={index}>X</button>
+                  <span className="w3-large">{fruit.name}</span>
+                  <br />
+                  <span className="w3-small">Colors: {fruit.colors.join(", ")}</span>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
     );
   }
 }

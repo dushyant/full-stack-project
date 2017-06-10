@@ -46,20 +46,18 @@ class AddFruitForm extends Component {
 
   render() {
     return (
-      <div className="w3-row">
-        <div className="w3-card-4">
-          <div className="w3-container w3-teal">
-            <h3>Add Fruit</h3>
-          </div>
-          <form onSubmit={this.onFormSubmit} className="w3-container" role="add">
-            <label htmlFor="fruitname">Fruit Name:</label>
-            <input id="fruitname" type="text" placeholder="Enter fruit name" required />
-            <label htmlFor="fruitcolors">Fruit Colors:</label>
-            <input id="fruitcolors" type="text" placeholder="Red, Green, Blue, ..." required />
-            <button type="submit" className="w3-btn w3-blue">Add</button>
-          </form>
+      <form onSubmit={this.onFormSubmit} className="w3-container w3-card-4 w3-padding-16" role="add">
+        <h3 className="w3-text-green">Add Fruit</h3>
+        <div className="w3-section">
+          <input className="w3-input" id="fruitname" type="text" placeholder="Enter fruit name" required />
+          <label htmlFor="fruitname">Fruit Name:</label>
         </div>
-      </div>
+        <div className="w3-section">
+          <input className="w3-input" id="fruitcolors" type="text" placeholder="Red, Green, Blue, ..." required />
+          <label htmlFor="fruitcolors">Fruit Colors:</label>
+        </div>
+        <button type="submit" className="w3-btn w3-blue">Add</button>
+      </form>
     );
   }
 }
