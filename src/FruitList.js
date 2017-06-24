@@ -19,11 +19,11 @@ render() {
     return (
       <div className="w3-container w3-card-4 w3-padding-16">
         <h3 className="w3-text-green">Fruit List</h3>
-        <ul className="w3-ul w3-border w3-hoverable">
+        <ul className="w3-ul w3-border">
           {
             fruits.map(function(fruit, index) {
               return (
-                <li className="w3-padding-16 w3-hover-light-gray" key={index}>
+                <li className="w3-padding-16" key={index}>
                   <button className="w3-button w3-red w3-medium w3-right" onClick={() => onDeleteFruit(index)} key={index}>X</button>
                   <span className="w3-large">{fruit.name}</span>
                   <br />
