@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddFruitForm from './AddFruitForm';
 import FruitList from './FruitList';
+import axios from 'axios';
 
 class App extends Component {
 
@@ -8,21 +9,15 @@ class App extends Component {
     super(props)
 
     this.state = {
-      fruits: [
-        {
-          name: 'Apple',
-          colors: ['Red', 'Green', 'Pink']
-        },
-        {
-          name: 'Banana',
-          colors: ['Yellow', 'Green']
-        },
-        {
-          name: 'Orange',
-          colors: ['Orange']
-        }
-      ]
+      fruits: []
     }
+  }
+
+  componentDidMount() {
+    let component = this;
+    axios.get('/getFruits').then(function(data) {
+      component.setState( { fruits: data.data } );
+    });
   }
 
 
