@@ -16,10 +16,10 @@ class App extends Component {
   componentDidMount() {
     let component = this;
     axios.get('/getFruits').then(function(data) {
+      console.log(data);
       component.setState( { fruits: data.data } );
     });
   }
-
 
   // for now adding this method here
   // this can be part of shared component/module
@@ -47,9 +47,16 @@ class App extends Component {
 
     fruits.splice(index, 1);
     this.setState({ fruits });
-    // show message to user for better user experience
-    // {fruitName} is deleted
-    this.showMsg(fruitName + " is deleted");
+
+    axios.post('/updateFruit', this.state)
+      .then(function (response) {
+        // show message to user for better user experience
+        // {fruitName} is deleted
+        this.showMsg(fruitName + " is deleted");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   addFruit(fruit) {
@@ -71,9 +78,15 @@ class App extends Component {
       fruits.push(fruit);
       this.setState({ fruits });
 
-      // show message to user for better user experience
-      // {fruitName} is added
-      this.showMsg(fruit.name + " is added.");
+      axios.post('/updateFruit', this.state)
+      .then(function (response) {
+        // show message to user for better user experience
+        // {fruitName} is added
+        this.showMsg(fruit.name + " is added.");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     };
   }
 
