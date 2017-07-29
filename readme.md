@@ -1,4 +1,4 @@
-# Full Stack Project
+# Full Stack Project using MERN stack
 
-## Learning Project
+## MongoDB, Express, React and Node
 
