@@ -50,7 +50,7 @@ app.get('/getFruits', function(req, res) {
 });
 
 app.post('/updateFruit', function(req, res) {
-  const connectionStr = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds139352.mlab.com:39352/myfruits`;
+  const connectionStr = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_HOST}`;
   MongoClient.connect(connectionStr, (error, database) => {
     if (error) {
       console.error('Can\'t connect to MongoDB');
