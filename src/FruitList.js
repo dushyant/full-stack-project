@@ -21,10 +21,10 @@ render() {
         <h3 className="w3-text-green">Fruit List</h3>
         <ul className="w3-ul w3-border">
           {
-            fruits.map(function(fruit, index) {
+            fruits.map(function(fruit) {
               return (
-                <li className="w3-padding-16" key={index}>
-                  <button className="w3-button w3-red w3-medium w3-right" onClick={() => onDeleteFruit(index)} key={index}>X</button>
+                <li className="w3-padding-16" data-id={fruit._id} key={fruit._id}>
+                  <button className="w3-button w3-red w3-medium w3-right" onClick={() => onDeleteFruit(fruit._id)} key={fruit._id}>X</button>
                   <span className="w3-large">{fruit.name}</span>
                   <br />
                   <span className="w3-small">Colors: {fruit.colors.join(", ")}</span>

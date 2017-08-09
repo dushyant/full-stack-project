@@ -41,18 +41,21 @@ class App extends Component {
     }, 3000);
   }
 
-  deleteFruit(index) {
-    let { fruits } = this.state;
-    let fruitName = fruits[index].name;
+  deleteFruit(fruitId) {
+    let component = this;
+    // let { fruits } = this.state;
+    //let fruitName = fruits[index].name;
 
-    fruits.splice(index, 1);
-    this.setState({ fruits });
+    // fruits.splice(index, 1);
+    // this.setState({ fruits });
 
-    axios.post('/updateFruit', this.state)
+    axios.delete('/deletefruit/' + fruitId)
       .then(function (response) {
         // show message to user for better user experience
         // {fruitName} is deleted
-        this.showMsg(fruitName + " is deleted");
+        //this.showMsg(fruitName + " is deleted");
+
+        component.setState( { fruits: response.data } );
       })
       .catch(function (error) {
         console.log(error);
@@ -60,6 +63,7 @@ class App extends Component {
   }
 
   addFruit(fruit) {
+    let component = this;
     let { fruits } = this.state;
 
     // Find if fruit is already exist
@@ -75,14 +79,18 @@ class App extends Component {
       // show message to user that {fruitName} is already exist
       this.showMsg(fruit.name + " is already exist");
     } else {
-      fruits.push(fruit);
-      this.setState({ fruits });
 
-      axios.post('/updateFruit', this.state)
+      console.log(fruit);
+
+      axios.post('/addfruit', fruit)
       .then(function (response) {
+        console.log("add fruit", response);
         // show message to user for better user experience
         // {fruitName} is added
-        this.showMsg(fruit.name + " is added.");
+        component.showMsg(response.data.name + " is added.");
+
+        fruits.push(response.data);
+        component.setState({ fruits });
       })
       .catch(function (error) {
         console.log(error);
