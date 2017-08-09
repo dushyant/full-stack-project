@@ -8,7 +8,11 @@ export default {
     const fruitProps = req.body;
 
     Fruit.create(fruitProps)
-      .then(fruit => res.send(fruit))
+      .then(() => {
+        Fruit.find()
+          .then(fruits => res.send(fruits))
+          .catch(next);
+      })
       .catch(next);
   },
 

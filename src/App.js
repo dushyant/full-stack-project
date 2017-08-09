@@ -55,7 +55,7 @@ class App extends Component {
         // {fruitName} is deleted
         //this.showMsg(fruitName + " is deleted");
 
-        component.setState( { fruits: response.data } );
+        component.setState({ fruits: response.data });
       })
       .catch(function (error) {
         console.log(error);
@@ -89,8 +89,7 @@ class App extends Component {
         // {fruitName} is added
         component.showMsg(response.data.name + " is added.");
 
-        fruits.push(response.data);
-        component.setState({ fruits });
+        component.setState({ fruits: response.data });
       })
       .catch(function (error) {
         console.log(error);
