@@ -1,4 +1,4 @@
 # Full Stack Project using MERN stack
 
-## MongoDB, Express, React and Node
+## MongoDB (Mongoose), Express, React and Node
 
