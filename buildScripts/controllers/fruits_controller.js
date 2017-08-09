@@ -4,7 +4,6 @@ export default {
 
   // Add Fruit controller
   addfruit(req, res, next) {
-    console.log("add fruits");
     const fruitProps = req.body;
 
     Fruit.create(fruitProps)
@@ -18,7 +17,6 @@ export default {
 
   // Get Fruits controller to get fruit on page load
   getfruits(req, res, next) {
-    console.log("get fruits");
     Fruit.find()
       .then(fruits => res.send(fruits))
       .catch(next);
@@ -28,7 +26,6 @@ export default {
   deletefruit(req, res, next) {
 
     const fruitId = req.params.fruitId;
-    console.log("Delete Fruit", fruitId);
     Fruit.findByIdAndRemove({ _id: fruitId})
       .then(() => {
         Fruit.find()

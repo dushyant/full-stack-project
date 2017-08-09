@@ -87,7 +87,7 @@ class App extends Component {
         console.log("add fruit", response);
         // show message to user for better user experience
         // {fruitName} is added
-        component.showMsg(response.data.name + " is added.");
+        component.showMsg(fruit.name + " is added.");
 
         component.setState({ fruits: response.data });
       })
