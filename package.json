@@ -6,8 +6,7 @@
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
     "start": "npm-run-all --parallel security-check open:src",
-    "open:src": "babel-node buildScripts/srcServer.js",
-    "security-check": "nsp check"
+    "open:src": "babel-node buildScripts/srcServer.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +34,6 @@
     "mongoose": "^4.11.6",
     "npm": "^4.6.1",
     "npm-run-all": "^4.0.2",
-    "nsp": "^2.6.3",
     "open": "0.0.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
