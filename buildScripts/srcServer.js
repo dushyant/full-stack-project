@@ -20,13 +20,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'src')));
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
+app.use(
+  require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  })
+);
 
 mongoose.Promise = global.Promise;
-mongoose.connect(connectionStr);
+mongoose.connect(connectionStr, {
+  useNewUrlParser: true,
+  useMongoClient: true,
+  useUnifiedTopology: true
+});
 
 routes(app);
 
